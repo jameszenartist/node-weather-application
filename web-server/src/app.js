@@ -11,21 +11,19 @@ const port = process.env.PORT || 3000;
 
 // Define paths for express config
 const publicDirectoryPath = path.join(__dirname, "../public");
-const static = path.join(__dirname, "../public/static");
 
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath));
-app.use(express.static(static));
 
 app.get("/", (req, res) => {
   res.sendFile("index.html");
 });
 app.get("/about", (req, res) => {
-  res.sendFile(`${static}/about.html`);
+  res.sendFile(`${publicDirectoryPath}/about.html`);
 });
 
 app.get("/help", (req, res) => {
-  res.sendFile(`${static}/help.html`);
+  res.sendFile(`${publicDirectoryPath}/help.html`);
 });
 
 app.get("/weather", (req, res) => {
