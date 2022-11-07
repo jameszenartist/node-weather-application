@@ -8,23 +8,22 @@ const { geocode } = require("./utils/geocode");
 const { forecast } = require("./utils/forecast");
 const app = express();
 const port = process.env.PORT || 3000;
-
 // Define paths for express config
 const publicDirectoryPath = path.join(__dirname, "../public");
-console.log(publicDirectoryPath);
 
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath));
 
 app.get("/", (req, res) => {
+  console.log("the url is :", req.url);
   res.sendFile("index.html");
 });
 app.use("/about", (req, res) => {
-  res.sendFile(`${publicDirectoryPath}/about.html`);
+  res.sendFile("about.html", { root: publicDirectoryPath });
 });
 
 app.get("/help", (req, res) => {
-  res.sendFile(`${publicDirectoryPath}/help.html`);
+  res.sendFile("help.html", { root: publicDirectoryPath });
 });
 
 app.get("/weather", (req, res) => {
