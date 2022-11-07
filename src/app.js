@@ -14,7 +14,6 @@ const publicDirectoryPath = path.join(__dirname, "../public");
 
 // Setup static directory to serve
 
-app.use("/web-server/public", express.static("public"));
 app.use(express.static(publicDirectoryPath));
 
 app.get("/", (req, res) => {
