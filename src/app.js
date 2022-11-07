@@ -19,15 +19,15 @@ app.use(express.static(publicDirectoryPath));
 // });
 
 app.get("/", (req, res) => {
-  res.sendFile("index.html");
+  res.sendFile(`${publicDirectoryPath}/index.html`);
 });
 
 app.get("/about", (req, res) => {
-  res.sendFile("about.html");
+  res.sendFile(`${publicDirectoryPath}/about.html`);
 });
 
 app.get("/help", (req, res) => {
-  res.sendFile("help.html");
+  res.sendFile(`${publicDirectoryPath}/help.html`);
 });
 
 app.get("/weather", (req, res) => {
