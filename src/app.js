@@ -15,10 +15,9 @@ const publicDirectoryPath = path.join(__dirname, "../public");
 app.use(express.static(publicDirectoryPath));
 
 app.get("/", (req, res) => {
-  console.log("the url is :", req.url);
   res.sendFile("index.html");
 });
-app.use("/about", (req, res) => {
+app.get("/about", (req, res) => {
   res.sendFile("about.html", { root: publicDirectoryPath });
 });
 
