@@ -23,11 +23,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-  res.sendFile("about.html", { root: publicDirectoryPath });
+  res.sendFile("about.html");
 });
 
 app.get("/help", (req, res) => {
-  res.sendFile("help.html", { root: publicDirectoryPath });
+  res.sendFile("help.html");
 });
 
 app.get("/weather", (req, res) => {
