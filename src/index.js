@@ -12,22 +12,16 @@ const publicDirectoryPath = path.join(__dirname, "../public");
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath));
 
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "../public/views"));
-
 app.get("/", (req, res) => {
-  // res.sendFile("/index.html");
-  res.render("pages/index");
+  res.sendFile("/index.html");
 });
 
 app.get("/about", (req, res) => {
-  // res.sendFile("/about.html", { root: publicDirectoryPath });
-  res.render("pages/about");
+  res.sendFile("/about.html", { root: publicDirectoryPath });
 });
 
 app.get("/help", (req, res) => {
-  // res.sendFile("help.html", { root: publicDirectoryPath });
-  res.render("pages/help");
+  res.sendFile("help.html", { root: publicDirectoryPath });
 });
 
 app.get("/weather", (req, res) => {
