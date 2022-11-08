@@ -12,18 +12,19 @@ const port = process.env.PORT || 3000;
 const publicDirectoryPath = path.join(__dirname, "../public");
 
 // Setup static directory to serve
-app.use("/", express.static(publicDirectoryPath));
+app.use(express.static(publicDirectoryPath));
 
-app.get("/", (req, res) => {
+app.get("/", (req, res, next) => {
   res.sendFile("index.html");
+  next();
 });
 
 app.get("/about", (req, res) => {
-  res.sendFile(`${publicDirectoryPath}/about.html`);
+  res.sendFile("about.html", { root: publicDirectoryPath });
 });
 
 app.get("/help", (req, res) => {
-  res.sendFile(`${publicDirectoryPath}/help.html`);
+  res.sendFile("help.html", { root: publicDirectoryPath });
 });
 
 app.get("/weather", (req, res) => {
