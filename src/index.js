@@ -1,9 +1,7 @@
 const path = require("path");
 const express = require("express");
 require("dotenv").config();
-// console.log(__dirname);
-// console.log(__filename);
-// console.log(path.join(__dirname, "../public"));
+
 const { geocode } = require("./utils/geocode");
 const { forecast } = require("./utils/forecast");
 const app = express();
@@ -14,17 +12,22 @@ const publicDirectoryPath = path.join(__dirname, "../public");
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath));
 
-app.get("/", (req, res, next) => {
-  res.sendFile("/index.html");
-  next();
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "../public/views"));
+
+app.get("/", (req, res) => {
+  // res.sendFile("/index.html");
+  res.render("pages/index");
 });
 
 app.get("/about", (req, res) => {
-  res.sendFile("/about.html", { root: publicDirectoryPath });
+  // res.sendFile("/about.html", { root: publicDirectoryPath });
+  res.render("pages/about");
 });
 
 app.get("/help", (req, res) => {
-  res.sendFile("/help.html", { root: publicDirectoryPath });
+  // res.sendFile("help.html", { root: publicDirectoryPath });
+  res.render("pages/help");
 });
 
 app.get("/weather", (req, res) => {
